@@ -38,8 +38,8 @@ while is_race_on:
         turtles.forward(random_distance)
         if turtles.xcor() >= 250:
             is_race_on = False
-            screen.bye()
-            print(f"{colors[i]} WON!")
+            print(f"{colors[i].title()} WON!")
+            if user_bet.lower() == colors[i]:
+                print("You WON! You placed the winning bet!")
         i += 1
-
-screen.exitonclick()
+screen.bye()
