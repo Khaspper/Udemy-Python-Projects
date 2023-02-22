@@ -14,12 +14,8 @@ class Snake:
     def __init__(self):
         self.snake_bodies = []
         for position in STARTING_POSITIONS:
-            self.body_part = Turtle("square")
-            self.body_part.penup()
-            self.body_part.color("white")
-            self.body_part.setposition(position)
-            self.snake_bodies.append(self.body_part)
-            self.head = self.snake_bodies[0]
+            self.add_body(position)
+        self.head = self.snake_bodies[0]
 
     def move(self):
         #* You first want to set the tails to the new position
@@ -45,3 +41,13 @@ class Snake:
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
+    def extend(self):
+        #* adds a new segment to the snake
+        self.add_body(self.snake_bodies[-1].position())
+
+    def add_body(self, position):
+        body_part = Turtle("square")
+        body_part.penup()
+        body_part.color("white")
+        body_part.setposition(position)
+        self.snake_bodies.append(body_part)
