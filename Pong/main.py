@@ -34,33 +34,21 @@ while game_is_on:
     if ball.xcor() >= 330 or ball.xcor() <= -330:
         if ball.distance(right_paddle) < 60 or ball.distance(left_paddle) < 60:
             ball.paddle_bounce()
+            ball.speed_up()
         else:
             if ball.xcor() >= 380:
                 l_score.update_score()
                 time.sleep(.5)
                 ball.left_paddle_won()
+                ball.reset_speed()
             elif ball.xcor() <= -380:
                 r_score.update_score()
                 time.sleep(.5)
                 ball.right_paddle_won()
+                ball.reset_speed()
 
     if r_score.score == 7 or l_score.score == 7:
         r_score.game_over()
         game_is_on = False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 screen.exitonclick()

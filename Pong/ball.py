@@ -8,9 +8,10 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("white")
         self.setheading(45)
+        self.movement_speed = 2.5
 
     def move(self):
-        self.forward(2.5)
+        self.forward(self.movement_speed)
 
     def hit_the_top(self):
         if -290 >= self.ycor() or self.ycor() >= 290:
@@ -29,3 +30,9 @@ class Ball(Turtle):
     def left_paddle_won(self):
         self.home()
         self.setheading(45)
+
+    def speed_up(self):
+        self.movement_speed += .5
+
+    def reset_speed(self):
+        self.movement_speed = 2.5
