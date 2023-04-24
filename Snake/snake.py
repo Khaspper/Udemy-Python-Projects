@@ -13,9 +13,12 @@ class Snake:
     #* The constructor to build the object
     def __init__(self):
         self.snake_bodies = []
+        self.create_snake()
+        self.head = self.snake_bodies[0]
+
+    def create_snake(self):
         for position in STARTING_POSITIONS:
             self.add_body(position)
-        self.head = self.snake_bodies[0]
 
     def move(self):
         #* You first want to set the tails to the new position
@@ -51,3 +54,10 @@ class Snake:
         body_part.color("white")
         body_part.setposition(position)
         self.snake_bodies.append(body_part)
+
+    def reset(self):
+        for body in self.snake_bodies:
+            body.goto(1000, 1000)
+        self.snake_bodies.clear()
+        self.create_snake()
+        self.head = self.snake_bodies[0]
