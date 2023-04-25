@@ -17,7 +17,8 @@ timmy.speed("fastest")
 #* Makes sure when "timmy" moves he/him doesn't draw on the screen
 timmy.penup()
 
-#* Sets the y coordinate to -280
+#* Sets th
+# e y coordinate to -280
 y_coordinate = -280
 
 #* A list of RBG values
