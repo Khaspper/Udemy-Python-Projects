@@ -20,9 +20,11 @@ state_list = us_CSV.state.tolist()
 correct_guesses = []
 
 while len(correct_guesses) < 50:
-    if answer_state.lower() == "exit":
-        break
     answer_state = answer_state.title()
+    if answer_state == "Exit":
+        missing_states = [state for state in state_list if state not in correct_guesses]
+        print(missing_states)
+        break
     if (answer_state in state_list) and (answer_state not in correct_guesses):
         correct_guesses.append(answer_state)
         x_cor = sum(us_CSV[us_CSV.state == answer_state].x.to_list())
@@ -30,7 +32,6 @@ while len(correct_guesses) < 50:
         state.goto(x_cor, y_cor)
         state.write(answer_state, font=('Arial', 12, 'normal'))
     answer_state = screen.textinput(title=f"{len(correct_guesses)}/50 States Correct", prompt="Name a state...")
-
 
 
 
