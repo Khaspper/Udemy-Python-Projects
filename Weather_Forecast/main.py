@@ -31,7 +31,7 @@ for hour_data in weather_slice:
 
 if will_rain:
     client = Client(account_sid, auth_token)
-    message = client.messages \
+    message = client.messages\
         .create(
         body="It's going to rain to day brody :)",
         from_=os.getenv("twilio_phone_num"),
