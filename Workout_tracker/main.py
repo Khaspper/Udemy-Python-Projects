@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv("/Users/khaspper/Documents/code/python/.env")
 
 NUTIX_post_endpoint = os.getenv("NUTIX_post_endpoint")
-SHEETY_api_endpoint = os.getenv("SHEETY_api_endpoint")
+SHEETY_workout_api_endpoint = os.getenv("SHEETY_workout_api_endpoint")
 
 NUTIX_APP_ID = os.getenv("NUTIX_app_id")
 NUTIX_API_KEY = os.getenv("NUTIX_api_key")
