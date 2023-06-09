@@ -12,6 +12,8 @@ flight_search = FlightSearch()
 flight_data = FlightData()
 send_notif = NotificationManager()
 
+sheet_data.get_user_info()
+
 count = 1
 for city in data["sheet1"]:
     count += 1

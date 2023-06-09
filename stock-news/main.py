@@ -3,12 +3,13 @@ import requests
 import datetime as dt
 from newsapi import NewsApiClient
 from twilio.rest import Client
+from pprint import pprint
 # * The bottom are to import env variables
 import os
 from dotenv import load_dotenv
 load_dotenv("/Users/khaspper/Documents/code/python/.env")
 
-STOCK = "TSLA"
+STOCK = "PLTR"
 COMPANY_NAME = "Tesla Inc"
 
 twillio_account_sid = os.getenv("twilio_account_sid")
@@ -68,20 +69,25 @@ else:
     percentage = math.floor(((ereyesterday_close - previous_day_close) / ereyesterday_close) * -100)
     is_up = False
 
-if percentage >= 5:
-    newsapi = NewsApiClient(api_key=os.getenv("NEWS_api_key"))
-    top_headlines = newsapi.get_everything(q=STOCK)
-    formatted_articles = []
-    for _ in range(0, 3):
-        formatted_articles.append(f'\n{STOCK}: {arrow}{percentage}%\nHeadline: {top_headlines["articles"][_]["title"]}'
-                                  f'\nBrief: {top_headlines["articles"][_]["description"]}')
+# if percentage >= 5:
+newsapi = NewsApiClient(api_key=os.getenv("NEWS_api_key"))
+top_headlines = newsapi.get_everything(q=STOCK)
+formatted_articles = []
+for _ in range(0, 3):
+    formatted_articles.append(f'\n{STOCK}: {arrow}{percentage}%\nHeadline: {top_headlines["articles"][_]["title"]}'
+                              f'\nBrief: {top_headlines["articles"][_]["description"]}')
 
-    client = Client(twillio_account_sid, twillio_auth_token)
-    for article in formatted_articles:
-        message = client.messages\
-            .create(
-            body=article,
-            from_=os.getenv("twilio_phone_num"),
-            to=os.getenv("my_phone_num")
-        )
-    print(message.status)
+for num in range(3):
+    pprint(f'Content: {top_headlines["articles"][num]["content"]}')
+    pprint(f'Description: {top_headlines["articles"][num]["description"]}')
+    print("\n\n")
+
+    # client = Client(twillio_account_sid, twillio_auth_token)
+    # for article in formatted_articles:
+    #     message = client.messages\
+    #         .create(
+    #         body=article,
+    #         from_=os.getenv("twilio_phone_num"),
+    #         to=os.getenv("my_phone_num")
+    #     )
+    # print(message.status)
