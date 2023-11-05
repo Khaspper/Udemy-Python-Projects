@@ -15,19 +15,23 @@ An automated system that provides daily stock price updates and relevant news ar
 - Twilio API
 - NewsAPI
 
-## Getting Started
-To get a local copy up and running, follow these simple steps.
+## How to Use
+
+1. **API Keys**: Obtain your API keys from Twillio and NewsAPI and set them up within the application.
+2. **Run the Tracker**: Execute the script to start getting texts about your favorite Stocks.
 
 ### Prerequisites
 - A Twilio account and a corresponding API key for sending SMS.
 - An API key from NewsAPI to fetch the latest news articles.
+
+## Getting Started
+To get a local copy up and running, follow these simple steps.
 
 ### Installation
 1. Clone the repo
    ```sh
    git clone https://github.com/khaspper/stock-news.git
    ```
-Make sure you have your own
 
 TWILIO_SID = 'Enter your Twilio SID'
 TWILIO_AUTH_TOKEN = 'Enter your Twilio Auth Token'
